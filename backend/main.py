@@ -43,10 +43,10 @@ class SentenceDetail(SentenceBase):
 # --- FastAPI App Setup ---
 app = FastAPI()
 
-# Enable CORS so the React frontend on port 15173 can fetch data
+# Add this right below app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # In production, restrict this to your frontend URL
+    allow_origins=["https://tatoeba-3d.vercel.app"], # No trailing slash
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
