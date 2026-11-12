@@ -3,7 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Stars, Html } from '@react-three/drei';
 import * as THREE from 'three';
 
-const API_BASE = 'http://localhost:18000/api';
+const API_BASE = import.meta.env.VITE_API_BASE_URL + '/api';
 const VISUAL_SCALE = 50; 
 
 const LANGUAGES = [
