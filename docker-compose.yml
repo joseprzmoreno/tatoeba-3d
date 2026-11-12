@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: tatoeba_db
+    restart: always
+    environment:
+      POSTGRES_USER: tatoeba_user
+      POSTGRES_PASSWORD: supersecretpassword
+      POSTGRES_DB: tatoeba_db
+    ports:
+      - "15432:5432" # Host: 15432, Container: 5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: 
+      context: ./backend
+    container_name: tatoeba_backend
+    restart: always
+    environment:
+      # Connects to the internal container port (5432) using the service name 'db'
+      - DATABASE_URL=postgresql://tatoeba_user:supersecretpassword@db:5432/tatoeba_db
+    ports:
+      - "18000:18000" # Host: 18000, Container: 18000
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: tatoeba_frontend
+    restart: always
+    environment:
+      - VITE_API_BASE_URL=http://localhost:18000
+    ports:
+      - "15173:15173"
+    volumes:
+      - ./frontend:/app           # Forces Docker to use your live local folder
+      - /app/node_modules         # Protects the container's installed dependencies
+    depends_on:
+      - backend
+      
+volumes:
+  postgres_data:

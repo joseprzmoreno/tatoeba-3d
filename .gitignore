@@ -1,0 +1,47 @@
+# ========================
+# Secrets & Environments (CRITICAL)
+# ========================
+.env
+.env.*
+*.local
+
+# ========================
+# Python / Backend
+# ========================
+venv/
+backend/venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# ========================
+# Node / Frontend (Vite/React)
+# ========================
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+
+# ========================
+# Compressed Files
+# ========================
+*.zip
+*.tar.gz
+*.tar
+*.rar
+*.7z
+*.gz
+
+# ========================
+# OS & Editor Files
+# ========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

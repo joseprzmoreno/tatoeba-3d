@@ -1,0 +1,84 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color-scheme: dark;
+  background-color: #050510;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body, html, #root {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+}
+
+/* UI Overlay Layer */
+.ui-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Let clicks pass through to the 3D canvas */
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: auto;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.btn-random {
+  background: #2a2a40;
+  color: white;
+  border: 1px solid #444466;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.btn-random:hover {
+  background: #3a3a5a;
+  border-color: #666699;
+  box-shadow: 0 0 15px rgba(100, 100, 255, 0.4);
+}
+
+/* 3D HTML Popup */
+.sentence-popup {
+  background: rgba(15, 15, 25, 0.9);
+  border: 1px solid #444466;
+  padding: 15px;
+  border-radius: 8px;
+  width: 250px;
+  color: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  pointer-events: auto;
+  transform: translate3d(-50%, -120%, 0); /* Center above the glowing orb */
+}
+
+.sentence-popup h3 {
+  margin: 0 0 10px 0;
+  font-size: 1rem;
+  color: #aaddff;
+}
+
+.sentence-popup p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #aaaaaa;
+}
