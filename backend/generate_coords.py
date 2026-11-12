@@ -51,7 +51,7 @@ def generate_and_save_coordinates():
             "z": float(coords3d[i][2])
         })
     
-    chunk_size = 10000
+    chunk_size = 500
     for i in tqdm(range(0, len(mappings), chunk_size), desc="Saving to DB"):
         session.bulk_update_mappings(Sentence, mappings[i:i + chunk_size])
         session.commit()
